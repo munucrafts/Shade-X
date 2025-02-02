@@ -3,6 +3,7 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "stb/stb_image.h"
 #include "iostream"
 
 GLFWwindow* InitializeGLFW(GLuint width, GLuint height)
@@ -20,6 +21,8 @@ GLFWwindow* InitializeGLFW(GLuint width, GLuint height)
 
     // Create a window
     GLFWwindow* window = glfwCreateWindow(width, height, "Shade-X", nullptr, nullptr);
+    glfwMaximizeWindow(window);
+
     if (!window)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -44,7 +47,7 @@ int main()
     // Initialize GLFW and create a window
     GLuint width = 1600;
     GLuint height = 1000;
-    GLFWwindow* window = InitializeGLFW(width, height);;
+    GLFWwindow* window = InitializeGLFW(width, height);
 
     // Enter the render loop
     while (!glfwWindowShouldClose(window))
