@@ -6,7 +6,7 @@
 #include "stb/stb_image.h"
 #include "iostream"
 
-GLFWwindow* InitializeGLFW(GLuint width, GLuint height)
+GLFWwindow* InitializeGlfw(GLuint width, GLuint height)
 {
     if (!glfwInit())
     {
@@ -20,6 +20,7 @@ GLFWwindow* InitializeGLFW(GLuint width, GLuint height)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Create a window
+    glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
     GLFWwindow* window = glfwCreateWindow(width, height, "Shade-X", nullptr, nullptr);
     glfwMaximizeWindow(window);
 
@@ -47,7 +48,7 @@ int main()
     // Initialize GLFW and create a window
     GLuint width = 1600;
     GLuint height = 1000;
-    GLFWwindow* window = InitializeGLFW(width, height);
+    GLFWwindow* window = InitializeGlfw(width, height);
 
     // Enter the render loop
     while (!glfwWindowShouldClose(window))
