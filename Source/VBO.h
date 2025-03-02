@@ -9,6 +9,7 @@ public:
 	GLuint ID;
 
 public:
+	VBO();
 	VBO(GLfloat Vertices[], GLuint size);
 	void Bind();
 	void Unbind();

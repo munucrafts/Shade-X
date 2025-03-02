@@ -19,6 +19,7 @@ private:
 	void CreateShaderProgram();
 
 public:
+	Shader();
 	Shader(const char* vShaderPath, const char* fShaderPath);
 	~Shader();
 };
