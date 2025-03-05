@@ -1,10 +1,11 @@
 #pragma once
-#include "VAO.h"
 #include "Shader.h"
+#include "VAO.h"
 
 class ScreenTriangle
 {
 public:
+    ScreenTriangle();
     ScreenTriangle(Shader& shader);
     ~ScreenTriangle();
     void RenderScreenTriangle();

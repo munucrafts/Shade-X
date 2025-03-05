@@ -21,7 +21,9 @@ const char* Shader::LoadShaderFromPath(const char* shaderPath)
 
 Shader::Shader()
 {
-    shaderProgram, vertexShaderPath, fragmentShaderPath = nullptr;
+    shaderProgram = 0;
+    vertexShaderPath = nullptr;
+    fragmentShaderPath = nullptr;
 }
 
 Shader::Shader(const char* vShaderPath, const char* fShaderPath)

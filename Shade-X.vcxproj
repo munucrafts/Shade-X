@@ -143,18 +143,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ScreenTriangle.cpp" />
-    <ClCompile Include="Source\Shader.cpp" />
-    <ClCompile Include="Source\glad.c" />
+    <ClCompile Include="Source\Core\Renderer.cpp" />
+    <ClCompile Include="Source\App\ShadeX.cpp" />
+    <ClCompile Include="Source\Core\Rendering\ScreenTriangle.cpp" />
+    <ClCompile Include="Source\Core\Rendering\Shader.cpp" />
+    <ClCompile Include="Source\ThirdParty\glad.c" />
     <ClCompile Include="Source\Main.cpp" />
-    <ClCompile Include="Source\VBO.cpp" />
-    <ClCompile Include="Source\VAO.cpp" />
+    <ClCompile Include="Source\Core\Rendering\VBO.cpp" />
+    <ClCompile Include="Source\Core\Rendering\VAO.cpp" />
+    <ClCompile Include="Source\Core\WindowHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ScreenTriangle.h" />
-    <ClInclude Include="Source\Shader.h" />
-    <ClInclude Include="Source\VBO.h" />
-    <ClInclude Include="Source\VAO.h" />
+    <ClInclude Include="Source\Core\Renderer.h" />
+    <ClInclude Include="Source\App\ShadeX.h" />
+    <ClInclude Include="Source\Core\Rendering\ScreenTriangle.h" />
+    <ClInclude Include="Source\Core\Rendering\Shader.h" />
+    <ClInclude Include="Source\Core\Rendering\VBO.h" />
+    <ClInclude Include="Source\Core\Rendering\VAO.h" />
+    <ClInclude Include="Source\Core\WindowHandler.h" />
+    <ClInclude Include="Source\Utils\Commons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

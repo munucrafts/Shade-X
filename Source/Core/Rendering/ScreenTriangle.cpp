@@ -1,5 +1,7 @@
 #include "ScreenTriangle.h"
 
+ScreenTriangle::ScreenTriangle() = default;
+
 ScreenTriangle::ScreenTriangle(Shader& shader)
 {
     shaderMain = shader;
@@ -15,12 +17,13 @@ ScreenTriangle::~ScreenTriangle()
 void ScreenTriangle::SetupScreenTriangle()
 {
     float TriVertices[] = 
-    {
-         -1.0f, -1.0f,
-          3.0f, -1.0f,
-         -1.0f,  3.0f
-    };
+        { 
+            -1.0f, -1.0f, 
+             3.0f, -1.0f, 
+            -1.0f,  3.0f 
+        };
 
+    vao.VaoInit();
     vbo = VBO(TriVertices, sizeof(TriVertices));
     vao.Bind();
     vbo.Bind();

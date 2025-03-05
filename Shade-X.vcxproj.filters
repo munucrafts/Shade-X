@@ -18,33 +18,54 @@
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\glad.c">
+    <ClCompile Include="Source\ThirdParty\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\VBO.cpp">
+    <ClCompile Include="Source\Core\Rendering\VBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Shader.cpp">
+    <ClCompile Include="Source\Core\Rendering\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\VAO.cpp">
+    <ClCompile Include="Source\Core\Rendering\VAO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ScreenTriangle.cpp">
+    <ClCompile Include="Source\Core\Rendering\ScreenTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\ShadeX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\WindowHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\VBO.h">
+    <ClInclude Include="Source\Core\Rendering\VBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Shader.h">
+    <ClInclude Include="Source\Core\Rendering\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\VAO.h">
+    <ClInclude Include="Source\Core\Rendering\VAO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ScreenTriangle.h">
+    <ClInclude Include="Source\Core\Rendering\ScreenTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\ShadeX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\WindowHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Commons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
