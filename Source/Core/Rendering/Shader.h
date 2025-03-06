@@ -4,6 +4,13 @@
 #include "iostream"
 #include "fstream"
 #include "string"
+#include <vector>
+
+struct ShaderInfo
+{
+	const char* vsSource;
+	const char* fsSource;
+};
 
 class Shader
 {
@@ -11,16 +18,18 @@ public:
 	GLuint shaderProgram;
 
 private:
-	const char* vertexShaderPath;
-	const char* fragmentShaderPath;
+	const char* LoadShaderFromPath(const char* shaderPath);
+	void CreateShaderProgram();
+	void CompileShader(ShaderInfo& newShader);
 
 private:
-	const char* LoadShaderFromPath(const char* shaderPath);
+	unsigned int shaderCount;
+	std::vector<ShaderInfo> shadersArray;
 
 public:
 	Shader();
-	Shader(const char* vShaderPath, const char* fShaderPath);
 	~Shader();
-	void CreateShaderProgram();
+	void InitShaders();
+	void UpdateShader(int shaderNumber);
 };
 

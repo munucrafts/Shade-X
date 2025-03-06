@@ -4,8 +4,8 @@ Renderer::Renderer() = default;
 
 void Renderer::Initialize()
 {
-    shader = Shader("././Shaders/vert.glsl", "././Shaders/frag.glsl");
-    shader.CreateShaderProgram();
+    shader = Shader();
+    shader.InitShaders();
 
     screenTriangle = ScreenTriangle();
     screenTriangle.InitScreenTriangle();
