@@ -19,18 +19,12 @@ const char* Shader::LoadShaderFromPath(const char* shaderPath)
     return shaderCode;
 }
 
-Shader::Shader()
-{
-    shaderProgram = 0;
-    vertexShaderPath = nullptr;
-    fragmentShaderPath = nullptr;
-}
+Shader::Shader() = default;
 
 Shader::Shader(const char* vShaderPath, const char* fShaderPath)
 {
     vertexShaderPath = vShaderPath;
     fragmentShaderPath = fShaderPath;
-    CreateShaderProgram();
 }
 
 Shader::~Shader()

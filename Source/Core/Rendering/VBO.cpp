@@ -2,11 +2,11 @@
 
 VBO::VBO() = default;
 
-VBO::VBO(GLfloat Vertices[], GLuint size)
+void VBO::InitVbo(GLfloat vertices[], GLuint size)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_ARRAY_BUFFER, ID);
-	glBufferData(GL_ARRAY_BUFFER, size, Vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 }
 
 void VBO::Bind()

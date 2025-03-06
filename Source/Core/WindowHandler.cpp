@@ -13,10 +13,6 @@ WindowHandler::WindowHandler()
 void WindowHandler::Initialize()
 {
     InitializeGlfw(500, 500);
-
-    Shader defaultShader("./Shaders/vert.glsl", "./Shaders/frag.glsl");
-    glUseProgram(defaultShader.shaderProgram);
-    ScreenTriangle screenTriangle(defaultShader);
 }
 
 void WindowHandler::Destroy()
@@ -61,7 +57,7 @@ void WindowHandler::InitializeGlfw(GLuint width, GLuint height)
     if (!glfwInit())
     {
         std::cout << "Failed to initialize GLFW" << std::endl;
-        exit(1);
+        Destroy();
     }
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -75,7 +71,7 @@ void WindowHandler::InitializeGlfw(GLuint width, GLuint height)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
-        exit(1);
+        Destroy();
     }
 
     glfwMakeContextCurrent(window);
@@ -83,7 +79,7 @@ void WindowHandler::InitializeGlfw(GLuint width, GLuint height)
     if (!gladLoadGL())
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
-        exit(1);
+        Destroy();
     }
 
     glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);

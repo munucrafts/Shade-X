@@ -1,7 +1,6 @@
 #include "ShadeX.h"
 
-ShadeX::ShadeX()
-{}
+ShadeX::ShadeX() = default;
 
 bool ShadeX::Initialize()
 {

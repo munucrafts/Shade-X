@@ -2,29 +2,23 @@
 
 ScreenTriangle::ScreenTriangle() = default;
 
-ScreenTriangle::ScreenTriangle(Shader& shader)
-{
-    shaderMain = shader;
-    SetupScreenTriangle();
-}
-
 ScreenTriangle::~ScreenTriangle()
 {
     vao.Delete();
     vbo.Delete();
 }
 
-void ScreenTriangle::SetupScreenTriangle()
+void ScreenTriangle::InitScreenTriangle()
 {
-    float TriVertices[] = 
+    float triVertices[] = 
         { 
             -1.0f, -1.0f, 
              3.0f, -1.0f, 
             -1.0f,  3.0f 
         };
 
-    vao.VaoInit();
-    vbo = VBO(TriVertices, sizeof(TriVertices));
+    vao.InitVao();
+    vbo.InitVbo(triVertices, sizeof(triVertices));
     vao.Bind();
     vbo.Bind();
     vao.LinkAttrib(vbo, 0, 2, GL_FLOAT, 2 * sizeof(float), (void*)0);

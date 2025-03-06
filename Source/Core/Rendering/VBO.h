@@ -9,7 +9,7 @@ public:
 
 public:
 	VBO();
-	VBO(GLfloat Vertices[], GLuint size);
+	void InitVbo(GLfloat vertices[], GLuint size);
 	void Bind();
 	void Unbind();
 	void Delete();

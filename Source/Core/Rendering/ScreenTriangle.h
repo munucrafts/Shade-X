@@ -6,17 +6,13 @@ class ScreenTriangle
 {
 public:
     ScreenTriangle();
-    ScreenTriangle(Shader& shader);
     ~ScreenTriangle();
     void RenderScreenTriangle();
+    void InitScreenTriangle();
 
 private:
     VAO vao;
     VBO vbo;
-    Shader shaderMain;
-
-private:
-    void SetupScreenTriangle();
 };
 
 
