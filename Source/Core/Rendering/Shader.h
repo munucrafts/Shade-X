@@ -8,7 +8,6 @@
 
 struct ShaderInfo
 {
-	const char* shaderName;
 	const char* vsSource;
 	const char* fsSource;
 };
@@ -17,6 +16,8 @@ class Shader
 {
 public:
 	GLuint shaderProgram;
+	unsigned int shaderCount;
+	unsigned int currentShaderIndex;
 
 private:
 	const char* LoadShaderFromPath(const char* shaderPath);
@@ -24,7 +25,6 @@ private:
 	void CompileShader(ShaderInfo& newShader);
 
 private:
-	unsigned int shaderCount;
 	std::vector<ShaderInfo> shadersArray;
 
 public:

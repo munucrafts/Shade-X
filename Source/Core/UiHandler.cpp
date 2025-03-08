@@ -22,7 +22,6 @@ void UiHandler::Render(Shader* shader)
     ImGui::NewFrame();
 
     UiRendering();
-    UiInteraction();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -42,21 +41,26 @@ void UiHandler::UiRendering()
 
     ImGui::Spacing();
 
-    for (int i = 0; i < 10; i++)
-    {
-        std::string shaderName = "shader : " + std::to_string(i);
+    int columns = 3;
+    int totalShaders = shaderMain->shaderCount;
 
-        if (ImGui::Button(shaderName.c_str(), ImVec2(100, 20)))
+    if (ImGui::BeginTable("ShaderGrid", columns))
+    {
+        for (int i = 0; i < totalShaders; i++)
         {
-            shaderMain->UpdateShader(i);
+            ImGui::Spacing();
+            ImGui::TableNextColumn();
+            std::string shaderName = "Shader " + std::to_string(i);
+
+            if (ImGui::Button(shaderName.c_str(), ImVec2(200, 120)) && (shaderMain->currentShaderIndex != i))
+            {
+                shaderMain->UpdateShader(i);
+            }
         }
+
+        ImGui::EndTable();
     }
 
-    ImGui::SetNextWindowSize(ImVec2(200, 25 * 10));
     ImGui::End();
 }
 
-void UiHandler::UiInteraction()
-{
-    // Add UI Interactions Here
-}

@@ -19,6 +19,5 @@ private:
 
 private:
 	void UiRendering();
-	void UiInteraction();
 };
 

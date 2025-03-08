@@ -1,5 +1,8 @@
 #pragma once
 #include "..\Utils\Commons.h"
+#include "Rendering/Shader.h"
+#include "Rendering/ScreenTriangle.h"
+
 
 class WindowHandler
 {

@@ -4,6 +4,7 @@ Shader::Shader()
 {
     shaderProgram = 0;
     shaderCount = 10;
+    currentShaderIndex = 0;
     shadersArray.resize(shaderCount);
 }
 
@@ -47,7 +48,6 @@ void Shader::InitShaders()
         shadersArray[i].fsSource = LoadShaderFromPath(fragPath.c_str());
     }
 
-    CreateShaderProgram();
     UpdateShader(0);
 }
 
@@ -55,6 +55,7 @@ void Shader::UpdateShader(int shaderNumber)
 {
     CreateShaderProgram();
     CompileShader(shadersArray[shaderNumber]);
+    currentShaderIndex = shaderNumber;
 }
 
 void Shader::CompileShader(ShaderInfo& newShader)

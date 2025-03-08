@@ -1,8 +1,4 @@
-#include "..\Utils\Commons.h"
 #include "WindowHandler.h"
-#include "Rendering/Shader.h"
-#include "Rendering/ScreenTriangle.h"
-
 
 WindowHandler::WindowHandler()
 {
