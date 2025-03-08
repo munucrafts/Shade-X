@@ -12,7 +12,7 @@ public:
 	void Initialize();
 	void Destroy();
 	void InitializeGlfw(GLuint width, GLuint height);
-	void GetFrameBufferSize(int& width, int& height);
+	void Render(int& width, int& height);
 	bool ShouldRun();
 	GLFWwindow* GetWindow();
 };

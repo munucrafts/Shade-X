@@ -26,7 +26,7 @@ void WindowHandler::Destroy()
     run = false;
 }
 
-void WindowHandler::GetFrameBufferSize(int& width, int& height)
+void WindowHandler::Render(int& width, int& height)
 {
     glfwGetFramebufferSize(window, &width, &height);
 }

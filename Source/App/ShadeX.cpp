@@ -2,12 +2,11 @@
 
 ShadeX::ShadeX() = default;
 
-bool ShadeX::Initialize()
+void ShadeX::Initialize()
 {
     winHandler.Initialize();
     renderer.Initialize();
-
-    return true;
+    uiHandler.Initialize(winHandler.GetWindow());
 }
 
 void ShadeX::Run()
@@ -17,8 +16,9 @@ void ShadeX::Run()
 
     while (winHandler.ShouldRun())
     {
-        winHandler.GetFrameBufferSize(screenWidth, screenHeight);
+        winHandler.Render(screenWidth, screenHeight);
         renderer.Render(screenWidth, screenHeight);
+        uiHandler.Render();
 
         glfwSwapBuffers(winHandler.GetWindow());
         glfwPollEvents();
@@ -29,4 +29,5 @@ void ShadeX::Shutdown()
 {
     renderer.Destroy();
     winHandler.Destroy();
+    uiHandler.Destroy();
 }
