@@ -18,7 +18,7 @@ void ShadeX::Run()
     {
         winHandler.Render(screenWidth, screenHeight);
         renderer.Render(screenWidth, screenHeight);
-        uiHandler.Render();
+        uiHandler.Render(&renderer.shader);
 
         glfwSwapBuffers(winHandler.GetWindow());
         glfwPollEvents();

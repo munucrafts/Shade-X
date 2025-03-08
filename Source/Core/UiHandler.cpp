@@ -13,13 +13,16 @@ void UiHandler::Initialize(GLFWwindow* window)
     ImGui::StyleColorsDark();
 }
 
-void UiHandler::Render()
+void UiHandler::Render(Shader* shader)
 {
+    shaderMain = shader;
+
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
     UiRendering();
+    UiInteraction();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -34,29 +37,26 @@ void UiHandler::Destroy()
 
 void UiHandler::UiRendering()
 {
-    static bool show_demo_window = true;
-    static bool show_another_window = false;
-    static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-    static float f = 0.0f;
-    static int counter = 0;
+    ImGui::Begin("Shade-X");
+    ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
 
-    ImGui::Begin("Hello, world!");
+    ImGui::Spacing();
 
-    ImGui::Text("This is some useful text.");
-    ImGui::Checkbox("Demo Window", &show_demo_window);
-    ImGui::Checkbox("Another Window", &show_another_window);
+    for (int i = 0; i < 10; i++)
+    {
+        std::string shaderName = "shader : " + std::to_string(i);
 
-    ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
-    ImGui::ColorEdit3("clear color", (float*)&clear_color);
+        if (ImGui::Button(shaderName.c_str(), ImVec2(100, 20)))
+        {
+            shaderMain->UpdateShader(i);
+        }
+    }
 
-    if (ImGui::Button("Button"))
-        counter++;
-
-    ImGui::SameLine();
-    ImGui::Text("counter = %d", counter);
-
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
-                1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
+    ImGui::SetNextWindowSize(ImVec2(200, 25 * 10));
     ImGui::End();
+}
+
+void UiHandler::UiInteraction()
+{
+    // Add UI Interactions Here
 }

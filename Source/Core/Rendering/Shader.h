@@ -8,6 +8,7 @@
 
 struct ShaderInfo
 {
+	const char* shaderName;
 	const char* vsSource;
 	const char* fsSource;
 };

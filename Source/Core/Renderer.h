@@ -10,8 +10,10 @@ public:
     void Render(int screenWidth, int screenHeight);
     void Destroy();
 
-private:
+public:
     Shader shader;
+
+private:
     ScreenTriangle screenTriangle;
     int width, height;
 };

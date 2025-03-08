@@ -4,7 +4,6 @@ Shader::Shader()
 {
     shaderProgram = 0;
     shaderCount = 10;
-
     shadersArray.resize(shaderCount);
 }
 
@@ -34,7 +33,7 @@ const char* Shader::LoadShaderFromPath(const char* shaderPath)
 
 void Shader::CreateShaderProgram()
 {
-    shaderProgram =  glCreateProgram();
+    shaderProgram = glCreateProgram();
 }
 
 void Shader::InitShaders()
@@ -54,6 +53,7 @@ void Shader::InitShaders()
 
 void Shader::UpdateShader(int shaderNumber)
 {
+    CreateShaderProgram();
     CompileShader(shadersArray[shaderNumber]);
 }
 
