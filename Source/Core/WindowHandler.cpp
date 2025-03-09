@@ -13,7 +13,7 @@ void WindowHandler::Initialize()
 
 void WindowHandler::Destroy()
 {
-    if (window)
+    if (glfwWindowShouldClose(window))
     {
         glfwDestroyWindow(window);
         window = nullptr;

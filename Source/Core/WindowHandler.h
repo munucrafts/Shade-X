@@ -7,8 +7,8 @@
 class WindowHandler
 {
 private:
-	bool run;
 	GLFWwindow* window;
+	bool run;
 
 public:
 	WindowHandler();

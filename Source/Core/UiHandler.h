@@ -1,8 +1,10 @@
 #pragma once
+#include "../Utils/Commons.h"
 #include "../ThirdParty/imgui/imgui.h"
 #include "../ThirdParty/imgui/imgui_impl_glfw.h"
 #include "../ThirdParty/imgui/imgui_impl_opengl3.h"
 #include "Rendering/Shader.h"
+
 
 class UiHandler
 {
@@ -16,8 +18,7 @@ private:
 	GLFWwindow* currentWindow;
 	ImGuiIO io;
 	Shader* shaderMain;
-
-private:
+	void SetFont(unsigned char font[], int size);
 	void UiRendering();
 };
 

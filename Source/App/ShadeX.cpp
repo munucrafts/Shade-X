@@ -30,4 +30,6 @@ void ShadeX::Shutdown()
     renderer.Destroy();
     winHandler.Destroy();
     uiHandler.Destroy();
+
+    glfwTerminate();
 }
