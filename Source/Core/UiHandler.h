@@ -18,7 +18,11 @@ private:
 	GLFWwindow* currentWindow;
 	ImGuiIO io;
 	Shader* shaderMain;
+
+private:
 	void SetFont(unsigned char font[], int size);
 	void UiRendering();
+	void HandleShaderThumbnailGrid(int columns, ImVec2 thumbnailSize, int totalShaderCount);
+	void HandleShaderUniforms(float width);
 };
 
