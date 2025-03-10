@@ -5,11 +5,15 @@
 #include "fstream"
 #include "string"
 #include <vector>
+#include "../../Utils/CommonStructs.h"
+
 
 struct ShaderInfo
 {
 	const char* vsSource;
 	const char* fsSource;
+
+	ShaderUniforms uniforms;
 };
 
 class Shader
@@ -20,17 +24,18 @@ public:
 	unsigned int currentShaderIndex;
 
 private:
+	std::vector<ShaderInfo> shadersArray;
+
+private:
 	const char* LoadShaderFromPath(const char* shaderPath);
 	void CreateShaderProgram();
 	void CompileShader(ShaderInfo& newShader);
-
-private:
-	std::vector<ShaderInfo> shadersArray;
 
 public:
 	Shader();
 	~Shader();
 	void InitShaders();
 	void UpdateShader(int shaderNumber);
+	void UpdateUniforms(ShaderUniforms* uniforms);
 };
 

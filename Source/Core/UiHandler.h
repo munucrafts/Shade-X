@@ -4,6 +4,7 @@
 #include "../ThirdParty/imgui/imgui_impl_glfw.h"
 #include "../ThirdParty/imgui/imgui_impl_opengl3.h"
 #include "Rendering/Shader.h"
+#include "../Utils/CommonStructs.h"
 
 
 class UiHandler

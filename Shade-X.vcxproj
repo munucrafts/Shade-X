@@ -180,6 +180,7 @@
     <ClInclude Include="Source\ThirdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Source\Utils\Commons.h" />
     <ClInclude Include="Source\Core\UiHandler.h" />
+    <ClInclude Include="Source\Utils\CommonStructs.h" />
     <ClInclude Include="Source\Utils\Fonts.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

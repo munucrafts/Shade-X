@@ -58,6 +58,11 @@ void Shader::UpdateShader(int shaderNumber)
     currentShaderIndex = shaderNumber;
 }
 
+void Shader::UpdateUniforms(ShaderUniforms* uniforms)
+{
+    shadersArray[currentShaderIndex].uniforms = *uniforms;
+}
+
 void Shader::CompileShader(ShaderInfo& newShader)
 {
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);

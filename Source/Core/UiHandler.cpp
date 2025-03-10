@@ -13,7 +13,7 @@ void UiHandler::Initialize(GLFWwindow* window)
     ImGui_ImplOpenGL3_Init("#version 330");
 
     SetFont(aoval, aovalSize);
-    ImGui::StyleColorsLight();
+    ImGui::StyleColorsClassic();
 }
 
 void UiHandler::Render(Shader* shader)
@@ -65,7 +65,7 @@ void UiHandler::UiRendering()
     if (!showWindowButtons) glfwSetWindowShouldClose(currentWindow, 1);
 
     HandleShaderThumbnailGrid(gridColumns, shaderThumbnailSize, totalShaders);
-    HandleShaderUniforms(gridColumns * shaderThumbnailSize.x);
+    HandleShaderUniforms(gridColumns * shaderThumbnailSize.x - 16.0f);
 
     ImGui::End();
 }
@@ -92,50 +92,53 @@ void UiHandler::HandleShaderThumbnailGrid(int columns, ImVec2 thumbnailSize, int
 void UiHandler::HandleShaderUniforms(float width)
 {
     ImGui::Spacing();
-    ImGui::Text("🎨 Shader Controls");
+    ImGui::Text("Shader Controls");
     ImGui::Separator();
     ImGui::Spacing();
 
-    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 8.0f); // Rounded sliders
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(6, 4)); // Compact spacing
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 3));
 
-    ImGui::BeginChild("ShaderControls", ImVec2(width, 150), true, ImGuiWindowFlags_NoScrollbar);
+    ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.8f, 0.8f, 0.8f, 0.0f));
 
-    if (ImGui::BeginTable("UniformsGrid", 2, ImGuiTableFlags_SizingStretchSame))
+    ImGui::BeginChild("ShaderControls", ImVec2(width, 170), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+
+    if (ImGui::BeginTable("UniformsGrid", 2, ImGuiTableFlags_SizingStretchSame | ImGuiTableFlags_BordersInnerV))
     {
-        // Speed
+        ImGui::TableSetupColumn("Uniforms", ImGuiTableColumnFlags_WidthStretch);
+        ImGui::TableSetupColumn("Values", ImGuiTableColumnFlags_WidthStretch);
+
         ImGui::TableNextColumn();
-        ImGui::Text("⏩ Speed");
+        ImGui::Text("Speed");
         static float speed = 0.5f;
-        ImGui::SliderFloat("##Speed", &speed, 0.0f, 1.0f, "%.1f");
-
-        // Brightness
         ImGui::TableNextColumn();
-        ImGui::Text("🔆 Brightness");
+        ImGui::SliderFloat("##Speed", &speed, 0.0f, 1.0f, "%.2f");
+
+        ImGui::TableNextColumn();
+        ImGui::Text("Brightness");
         static float brightness = 0.5f;
-        ImGui::SliderFloat("##Brightness", &brightness, 0.0f, 1.0f, "%.1f");
-
-        // Color
         ImGui::TableNextColumn();
-        ImGui::Text("🎨 Color");
+        ImGui::SliderFloat("##Brightness", &brightness, 0.0f, 1.0f, "%.2f");
+
+        ImGui::TableNextColumn();
+        ImGui::Text("Color");
         static ImVec4 color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        ImGui::TableNextColumn();
         ImGui::ColorEdit3("##Color", (float*)&color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
 
-        // Intensity
         ImGui::TableNextColumn();
-        ImGui::Text("💡 Intensity");
+        ImGui::Text("Intensity");
         static float intensity = 0.5f;
-        ImGui::SliderFloat("##Intensity", &intensity, 0.0f, 1.0f, "%.1f");
+        ImGui::TableNextColumn();
+        ImGui::SliderFloat("##Intensity", &intensity, 0.0f, 1.0f, "%.2f");
+
+        ShaderUniforms updatedUniforms(speed, intensity, brightness, color);
+        shaderMain->UpdateUniforms(&updatedUniforms);
 
         ImGui::EndTable();
     }
 
     ImGui::EndChild();
-
-    ImGui::PopStyleVar(2); // Restore styles
+    ImGui::PopStyleColor(); 
+    ImGui::PopStyleVar(2); 
 }
-
-
-
-
-
