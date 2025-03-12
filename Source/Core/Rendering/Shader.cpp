@@ -6,10 +6,28 @@ Shader::Shader()
     shaderCount = 10;
     currentShaderIndex = 0;
     shadersArray.resize(shaderCount);
+
+    std::vector<ShaderUniforms> shaderUniformsArray;
+    shaderUniformsArray.resize(shaderCount);
+    SavingSystem::GetInstance().LoadProject(shaderUniformsArray);
+
+    for (int i = 0; i < shaderCount; i++)
+    {
+        shadersArray[i].uniforms = shaderUniformsArray[i];
+    }
 }
 
 Shader::~Shader()
 {
+    std::vector<ShaderUniforms> shaderUniformsArray;
+    shaderUniformsArray.resize(shaderCount);
+
+    for (int i = 0; i < shaderCount; i++)
+    {
+        shaderUniformsArray[i] = shadersArray[i].uniforms;
+    }
+
+    SavingSystem::GetInstance().SaveProject(shaderUniformsArray);
     glDeleteProgram(shaderProgram);
 }
 
@@ -63,6 +81,12 @@ void Shader::UpdateUniforms(ShaderUniforms* uniforms)
     shadersArray[currentShaderIndex].uniforms = *uniforms;
 }
 
+ShaderUniforms& Shader::GetUniforms()
+{
+    std::cout << shadersArray[currentShaderIndex].uniforms.speed << std::endl;
+    return (shadersArray[currentShaderIndex].uniforms);
+}
+
 void Shader::CompileShader(ShaderInfo& newShader)
 {
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -80,3 +104,4 @@ void Shader::CompileShader(ShaderInfo& newShader)
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 }
+

@@ -11,7 +11,8 @@
 *.sln.docstates
 
 #imgui
-*imgui.ini
+imgui.ini
+OpenGL
 
 #vscode
 .vscode

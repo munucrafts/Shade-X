@@ -6,3 +6,4 @@ struct ShaderUniforms
     float speed, intensity, brightness;
     ImVec4 color;
 };
+

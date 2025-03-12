@@ -6,7 +6,7 @@
 #include "string"
 #include <vector>
 #include "../../Utils/CommonStructs.h"
-
+#include "../SavingSystem.h"
 
 struct ShaderInfo
 {
@@ -37,5 +37,6 @@ public:
 	void InitShaders();
 	void UpdateShader(int shaderNumber);
 	void UpdateUniforms(ShaderUniforms* uniforms);
+	ShaderUniforms& GetUniforms();
 };
 

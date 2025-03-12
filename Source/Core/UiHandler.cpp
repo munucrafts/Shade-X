@@ -108,27 +108,31 @@ void UiHandler::HandleShaderUniforms(float width)
         ImGui::TableSetupColumn("Uniforms", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableSetupColumn("Values", ImGuiTableColumnFlags_WidthStretch);
 
+        ShaderUniforms currentUniforms = shaderMain->GetUniforms();
+
+        //std::cout << currentUniforms.speed << std::endl;
+
         ImGui::TableNextColumn();
         ImGui::Text("Speed");
-        static float speed = 0.5f;
+        static float speed = currentUniforms.speed;
         ImGui::TableNextColumn();
         ImGui::SliderFloat("##Speed", &speed, 0.0f, 1.0f, "%.2f");
 
         ImGui::TableNextColumn();
         ImGui::Text("Brightness");
-        static float brightness = 0.5f;
+        static float brightness = currentUniforms.brightness;
         ImGui::TableNextColumn();
         ImGui::SliderFloat("##Brightness", &brightness, 0.0f, 1.0f, "%.2f");
 
         ImGui::TableNextColumn();
         ImGui::Text("Color");
-        static ImVec4 color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        static ImVec4 color = currentUniforms.color;
         ImGui::TableNextColumn();
         ImGui::ColorEdit3("##Color", (float*)&color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
 
         ImGui::TableNextColumn();
         ImGui::Text("Intensity");
-        static float intensity = 0.5f;
+        static float intensity = currentUniforms.intensity;
         ImGui::TableNextColumn();
         ImGui::SliderFloat("##Intensity", &intensity, 0.0f, 1.0f, "%.2f");
 

@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\SavingSystem.cpp" />
     <ClCompile Include="Source\Core\Renderer.cpp" />
     <ClCompile Include="Source\App\ShadeX.cpp" />
     <ClCompile Include="Source\Core\Rendering\ScreenTriangle.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Source\ThirdParty\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Core\SavingSystem.h" />
     <ClInclude Include="Source\Core\Renderer.h" />
     <ClInclude Include="Source\App\ShadeX.h" />
     <ClInclude Include="Source\Core\Rendering\ScreenTriangle.h" />
@@ -178,6 +180,7 @@
     <ClInclude Include="Source\ThirdParty\imgui\imstb_rectpack.h" />
     <ClInclude Include="Source\ThirdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="Source\ThirdParty\imgui\imstb_truetype.h" />
+    <ClInclude Include="Source\ThirdParty\json.hpp" />
     <ClInclude Include="Source\Utils\Commons.h" />
     <ClInclude Include="Source\Core\UiHandler.h" />
     <ClInclude Include="Source\Utils\CommonStructs.h" />
