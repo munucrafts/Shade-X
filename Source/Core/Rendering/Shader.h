@@ -10,8 +10,8 @@
 
 struct ShaderInfo
 {
-	const char* vsSource;
-	const char* fsSource;
+	std::string vsSource;
+	std::string fsSource;
 
 	ShaderUniforms uniforms;
 };
@@ -27,7 +27,7 @@ private:
 	std::vector<ShaderInfo> shadersArray;
 
 private:
-	const char* LoadShaderFromPath(const char* shaderPath);
+	std::string LoadShaderFromPath(std::string shaderPath);
 	void CreateShaderProgram();
 	void CompileShader(ShaderInfo& newShader);
 
@@ -39,4 +39,3 @@ public:
 	void UpdateUniforms(ShaderUniforms* uniforms);
 	ShaderUniforms& GetUniforms();
 };
-

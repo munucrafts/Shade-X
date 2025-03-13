@@ -31,23 +31,18 @@ Shader::~Shader()
     glDeleteProgram(shaderProgram);
 }
 
-const char* Shader::LoadShaderFromPath(const char* shaderPath)
+std::string Shader::LoadShaderFromPath(std::string shaderPath)
 {
     std::ifstream shaderFile(shaderPath);
-    std::string shaderText;
-    std::string line;
-
-    if (shaderFile.is_open())
+    if (!shaderFile.is_open())
     {
-        while (std::getline(shaderFile, line)) shaderText += line + "\n";
-        shaderFile.close();
+        std::cout << "Failed to open shader file: " << shaderPath << std::endl;
+        return "";
     }
 
-    char* shaderCode = new char[shaderText.size() + 1];
-    std::copy(shaderText.begin(), shaderText.end(), shaderCode);
-    shaderCode[shaderText.size()] = '\0';
-
-    return shaderCode;
+    std::stringstream buffer;
+    buffer << shaderFile.rdbuf();
+    return buffer.str();
 }
 
 void Shader::CreateShaderProgram()
@@ -62,8 +57,8 @@ void Shader::InitShaders()
         std::string vertPath = "./Shaders/vert" + std::to_string(i) + ".glsl";
         std::string fragPath = "./Shaders/frag" + std::to_string(i) + ".glsl";
 
-        shadersArray[i].vsSource = LoadShaderFromPath(vertPath.c_str());
-        shadersArray[i].fsSource = LoadShaderFromPath(fragPath.c_str());
+        shadersArray[i].vsSource = LoadShaderFromPath(vertPath);
+        shadersArray[i].fsSource = LoadShaderFromPath(fragPath);
     }
 
     UpdateShader(0);
@@ -89,11 +84,13 @@ ShaderUniforms& Shader::GetUniforms()
 void Shader::CompileShader(ShaderInfo& newShader)
 {
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &newShader.vsSource, nullptr);
+    const char* vs = newShader.vsSource.c_str();
+    glShaderSource(vertexShader, 1, &vs, nullptr);
     glCompileShader(vertexShader);
 
+    const char* fs = newShader.fsSource.c_str();
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &newShader.fsSource, nullptr);
+    glShaderSource(fragmentShader, 1, &fs, nullptr);
     glCompileShader(fragmentShader);
 
     glAttachShader(shaderProgram, vertexShader);
