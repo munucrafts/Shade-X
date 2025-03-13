@@ -83,7 +83,6 @@ void Shader::UpdateUniforms(ShaderUniforms* uniforms)
 
 ShaderUniforms& Shader::GetUniforms()
 {
-    std::cout << shadersArray[currentShaderIndex].uniforms.speed << std::endl;
     return (shadersArray[currentShaderIndex].uniforms);
 }
 

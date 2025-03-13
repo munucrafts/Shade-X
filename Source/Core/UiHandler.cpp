@@ -98,7 +98,6 @@ void UiHandler::HandleShaderUniforms(float width)
 
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 3));
-
     ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.8f, 0.8f, 0.8f, 0.0f));
 
     ImGui::BeginChild("ShaderControls", ImVec2(width, 170), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
@@ -108,41 +107,43 @@ void UiHandler::HandleShaderUniforms(float width)
         ImGui::TableSetupColumn("Uniforms", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableSetupColumn("Values", ImGuiTableColumnFlags_WidthStretch);
 
-        ShaderUniforms currentUniforms = shaderMain->GetUniforms();
-
-        //std::cout << currentUniforms.speed << std::endl;
+        ShaderUniforms& currentUniforms = shaderMain->GetUniforms();
+        float speed = currentUniforms.speed;
+        float brightness = currentUniforms.brightness;
+        ImVec4 color = currentUniforms.color;
+        float intensity = currentUniforms.intensity;
 
         ImGui::TableNextColumn();
         ImGui::Text("Speed");
-        static float speed = currentUniforms.speed;
         ImGui::TableNextColumn();
-        ImGui::SliderFloat("##Speed", &speed, 0.0f, 1.0f, "%.2f");
+        if (ImGui::SliderFloat("##Speed", &speed, 0.0f, 1.0f, "%.2f"))
+            currentUniforms.speed = speed; 
 
         ImGui::TableNextColumn();
         ImGui::Text("Brightness");
-        static float brightness = currentUniforms.brightness;
         ImGui::TableNextColumn();
-        ImGui::SliderFloat("##Brightness", &brightness, 0.0f, 1.0f, "%.2f");
+        if (ImGui::SliderFloat("##Brightness", &brightness, 0.0f, 1.0f, "%.2f"))
+            currentUniforms.brightness = brightness;
 
         ImGui::TableNextColumn();
         ImGui::Text("Color");
-        static ImVec4 color = currentUniforms.color;
         ImGui::TableNextColumn();
-        ImGui::ColorEdit3("##Color", (float*)&color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
+        if (ImGui::ColorEdit3("##Color", (float*)&color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel))
+            currentUniforms.color = color;
 
         ImGui::TableNextColumn();
         ImGui::Text("Intensity");
-        static float intensity = currentUniforms.intensity;
         ImGui::TableNextColumn();
-        ImGui::SliderFloat("##Intensity", &intensity, 0.0f, 1.0f, "%.2f");
+        if (ImGui::SliderFloat("##Intensity", &intensity, 0.0f, 1.0f, "%.2f"))
+            currentUniforms.intensity = intensity;
 
-        ShaderUniforms updatedUniforms(speed, intensity, brightness, color);
-        shaderMain->UpdateUniforms(&updatedUniforms);
+        shaderMain->UpdateUniforms(&currentUniforms);
 
         ImGui::EndTable();
     }
 
     ImGui::EndChild();
-    ImGui::PopStyleColor(); 
-    ImGui::PopStyleVar(2); 
+    ImGui::PopStyleColor();
+    ImGui::PopStyleVar(2);
 }
+
