@@ -20,8 +20,8 @@ class Shader
 {
 public:
 	GLuint shaderProgram;
-	unsigned int shaderCount;
 	unsigned int currentShaderIndex;
+	unsigned int shaderCount;
 
 private:
 	std::vector<ShaderInfo> shadersArray;
@@ -30,6 +30,7 @@ private:
 	std::string LoadShaderFromPath(std::string shaderPath);
 	void CreateShaderProgram();
 	void CompileShader(ShaderInfo& newShader);
+	int GetShadersCountFromFolder();
 
 public:
 	Shader();

@@ -3,8 +3,8 @@
 Shader::Shader()
 {
     shaderProgram = 0;
-    shaderCount = 10;
     currentShaderIndex = 0;
+    shaderCount = GetShadersCountFromFolder();
     shadersArray.resize(shaderCount);
 
     std::vector<ShaderUniforms> shaderUniformsArray;
@@ -34,6 +34,7 @@ Shader::~Shader()
 std::string Shader::LoadShaderFromPath(std::string shaderPath)
 {
     std::ifstream shaderFile(shaderPath);
+
     if (!shaderFile.is_open())
     {
         std::cout << "Failed to open shader file: " << shaderPath << std::endl;
@@ -99,5 +100,21 @@ void Shader::CompileShader(ShaderInfo& newShader)
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+}
+
+int Shader::GetShadersCountFromFolder()
+{
+    const std::string shaderPath = "./Shaders/";
+    int shaderCount = 0;
+
+    for (const auto& entry : std::filesystem::directory_iterator(shaderPath)) 
+    {
+        if (entry.path().extension() == ".glsl") 
+        {
+            shaderCount++;
+        }
+    }
+
+    return shaderCount / 2;
 }
 
