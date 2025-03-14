@@ -14,7 +14,7 @@ void Renderer::Initialize()
 
 void Renderer::Render(int screenWidth, int screenHeight)
 {
-    glClearColor(0.2f, 0.40f, 0.8f, 0.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(shader.shaderProgram);

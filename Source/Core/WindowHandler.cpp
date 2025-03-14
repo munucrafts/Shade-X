@@ -1,4 +1,4 @@
-#include "WindowHandler.h"
+﻿#include "WindowHandler.h"
 
 WindowHandler::WindowHandler()
 {
@@ -59,8 +59,8 @@ void WindowHandler::InitializeGlfw(GLuint width, GLuint height)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 
-    glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
     window = glfwCreateWindow(width, height, "Shade-X", nullptr, nullptr);
 
     if (!window)
