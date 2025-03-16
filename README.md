@@ -12,15 +12,17 @@
 ## ⚠️ Project Status: Work in Progress  
 This project is currently being developed by me after office hours and weekends.  
 
-## 🔧 Requirements  
-- **C++**  
-- **OpenGL**  
-- **ImGui**  
+## 📌 Completed Features  
+- Render **GLSL shaders** dynamically on a GLFW window.
+- Save & load shader configurations.  
+- Interactive **ImGui-based UI** for shader management.
+- Shader configurations by modifying Uniforms in runtime.
 
-## 📌 Planned & In-Progress Features  
-- Render **GLSL shaders** as dynamic wallpapers  
-- Interactive **ImGui-based UI** for shader management  
-- Save & load shader configurations  
+## 📌 In-Progress or Pending Features
+- Shader preview on the ImGui buttons.
+- Set shader window as windows wallpaper.
+- Multiple monitor support.
+- Performance enhancement and polishing.
 
 ## 📂 Installation & Usage *(Coming Soon)*  
 Installation instructions will be provided once the project reaches a stable state.  
