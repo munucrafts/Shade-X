@@ -2,8 +2,15 @@
 
 **Shade-X** is a **Free and Open Source (FOSS)** OpenGL-based application that allows you to render **GLSL shaders** as your desktop wallpaper.  
 
+## 📸 Screenshots  
+
+<p align="center">
+  <img src="Assets/Shot-1.png" alt="Shader Preview" width="45%">
+  <img src="Assets/Shot-2.png" alt="ImGui Interface" width="45%">
+</p>  
+
 ## ⚠️ Project Status: Work in Progress  
-This project is currently being developed by me after office hours and weekends.
+This project is currently being developed by me after office hours and weekends.  
 
 ## 🔧 Requirements  
 - **C++**  
